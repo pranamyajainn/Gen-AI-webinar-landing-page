@@ -4,7 +4,7 @@ export default function Footer() {
             <div className="container mx-auto px-4 lg:px-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
                     <div>
-                        <h3 className="text-white font-bold mb-4">[COMPANY_LEGAL_NAME]</h3>
+                        <h3 className="text-white font-bold mb-4">Namyah</h3>
                         <p>[COMPANY_ADDRESS]</p>
                         <p className="mt-2 text-primary">[SUPPORT_EMAIL]</p>
                     </div>
@@ -27,7 +27,7 @@ export default function Footer() {
                         Results vary. We do not guarantee that you will earn money or save a specific amount of time. All examples are for illustrative purposes. Not affiliated with OpenAI, Microsoft, or any other tool providers mentioned.
                     </p>
                     <p>
-                        &copy; 2026 [COMPANY_LEGAL_NAME]. All Rights Reserved.
+                        &copy; 2026 Namyah. All Rights Reserved.
                     </p>
                 </div>
             </div>

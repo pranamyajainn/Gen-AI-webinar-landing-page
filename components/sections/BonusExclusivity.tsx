@@ -1,40 +1,33 @@
 'use client';
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Gift, Lock, Flame, BookOpen, Image, FileCode } from 'lucide-react';
 import RegisterButton from '@/components/RegisterButton';
 
-const BONUSES = [
+const ASSETS = [
     {
-        icon: BookOpen,
-        title: 'Gold-Standard Prompts Library',
-        detail: '200+ battle-tested prompts across 12 categories. Copy, paste, profit.',
-        value: 'Worth ₹4,999',
-        color: 'from-amber-500 to-orange-600',
+        title: "Founder Prompt Playbook",
+        description: "200+ real prompts structured by business use case — not generic ChatGPT tips.",
+        useCases: ["Sales outreach", "Hiring briefs", "Competitive research", "Brand positioning", "Ops workflows"],
     },
     {
-        icon: FileCode,
-        title: 'Hidden AI Tools Directory',
-        detail: 'Curated list of 50+ free tools most founders don\'t know exist.',
-        value: 'Worth ₹2,999',
-        color: 'from-violet-500 to-indigo-600',
+        title: "Curated Free AI Stack",
+        description: "A vetted directory of free tools that replace paid subscriptions. Every tool tested, categorized, and explained.",
+        useCases: ["Writing & editing", "Image generation", "Data analysis", "Presentation design", "Automation"],
     },
     {
-        icon: Image,
-        title: 'AI Image Generation Masterpack',
-        detail: 'Prompts that generate brand-quality visuals for ads, decks, and social.',
-        value: 'Worth ₹3,499',
-        color: 'from-pink-500 to-rose-600',
+        title: "Visual Asset Toolkit",
+        description: "Plug-and-play prompt structures for generating visuals you'd actually use in your business.",
+        useCases: ["Ad creatives", "Pitch deck graphics", "Social media posts", "Brand assets", "Product mockups"],
     },
 ];
 
 const container = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.2 } },
+    visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
 };
 
 const fadeUp = {
-    hidden: { opacity: 0, y: 16 },
+    hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' as const } },
 };
 
@@ -43,13 +36,9 @@ export default function BonusExclusivity() {
     const isInView = useInView(ref, { once: true, margin: '-60px' });
 
     return (
-        <section id="bonus-exclusivity" className="py-16 lg:py-24 bg-slate-950 relative overflow-hidden" ref={ref}>
-            {/* Background shimmer */}
-            <div
-                className="absolute inset-0 pointer-events-none"
-                style={{ background: 'radial-gradient(ellipse at center, rgba(234,179,8,0.04), transparent 60%)' }}
-                aria-hidden="true"
-            />
+        <section id="bonus-exclusivity" className="py-20 lg:py-28 bg-slate-950 relative" ref={ref}>
+            {/* Subtle top divider */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent" />
 
             <motion.div
                 className="container mx-auto px-4 relative z-10 max-w-4xl"
@@ -58,63 +47,59 @@ export default function BonusExclusivity() {
                 animate={isInView ? 'visible' : 'hidden'}
             >
                 {/* Header */}
-                <motion.div variants={fadeUp} className="text-center mb-10">
-                    <div className="inline-flex items-center gap-2 bg-amber-500/10 text-amber-400 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-4">
-                        <Lock className="w-3.5 h-3.5" />
-                        Live Attendees Only
-                    </div>
-                    <h2 className="text-3xl lg:text-4xl font-bold text-white mb-2">
-                        You Also Walk Away With These
+                <motion.div variants={fadeUp} className="mb-14">
+                    <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">
+                        Included With Your Seat
                     </h2>
-                    <p className="text-slate-400 text-sm max-w-lg mx-auto">
-                        Exclusive bonuses available only during the live workshop. Not after. Not on replay.
+                    <p className="text-slate-500 text-base max-w-lg">
+                        These resources are shared live during the workshop. No upsell. No paywall. Just practical assets you keep.
                     </p>
                 </motion.div>
 
-                {/* Bonus Cards */}
-                <div className="space-y-4 mb-10">
-                    {BONUSES.map(({ icon: Icon, title, detail, value, color }) => (
+                {/* Asset Cards */}
+                <div className="space-y-5 mb-14">
+                    {ASSETS.map((asset, idx) => (
                         <motion.div
-                            key={title}
+                            key={asset.title}
                             variants={fadeUp}
-                            className="flex items-start gap-4 p-5 rounded-2xl bg-slate-900/70 border border-white/[0.06] hover:border-amber-500/20 transition-colors duration-300 group"
+                            className="group p-6 lg:p-8 rounded-2xl bg-slate-900/40 border border-white/[0.05] hover:border-white/[0.1] transition-colors duration-300"
                         >
-                            {/* Icon */}
-                            <div className={`flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br ${color} flex items-center justify-center shadow-lg`}>
-                                <Icon className="w-6 h-6 text-white" />
+                            {/* Number + Title */}
+                            <div className="flex items-baseline gap-4 mb-3">
+                                <span className="text-slate-700 font-mono text-sm font-bold tabular-nums">
+                                    0{idx + 1}
+                                </span>
+                                <h3 className="text-xl font-bold text-white group-hover:text-slate-100 transition-colors">
+                                    {asset.title}
+                                </h3>
                             </div>
 
-                            {/* Content */}
-                            <div className="flex-1 min-w-0">
-                                <div className="flex items-center gap-2 mb-1 flex-wrap">
-                                    <h4 className="font-bold text-white group-hover:text-amber-300 transition-colors">{title}</h4>
-                                    <span className="text-[10px] font-bold uppercase tracking-wider text-amber-500/70 bg-amber-500/10 px-2 py-0.5 rounded-full">{value}</span>
-                                </div>
-                                <p className="text-sm text-slate-500 leading-relaxed">{detail}</p>
-                            </div>
+                            {/* Description */}
+                            <p className="text-slate-400 leading-relaxed mb-4 pl-10">
+                                {asset.description}
+                            </p>
 
-                            {/* Gift badge */}
-                            <div className="flex-shrink-0 hidden sm:flex">
-                                <Gift className="w-5 h-5 text-amber-500/40 group-hover:text-amber-400 transition-colors" />
+                            {/* Use Case Tags */}
+                            <div className="flex flex-wrap gap-2 pl-10">
+                                {asset.useCases.map((tag) => (
+                                    <span
+                                        key={tag}
+                                        className="text-[11px] font-medium uppercase tracking-wider text-slate-500 bg-slate-800/60 border border-white/[0.04] px-3 py-1 rounded-full"
+                                    >
+                                        {tag}
+                                    </span>
+                                ))}
                             </div>
                         </motion.div>
                     ))}
                 </div>
 
-                {/* Scarcity / Asymmetry callout */}
-                <motion.div variants={fadeUp} className="text-center mb-8">
-                    <div className="inline-flex items-center gap-2 text-sm text-slate-400">
-                        <Flame className="w-4 h-4 text-amber-500" />
-                        <span>Combined value: <strong className="text-white">₹11,497</strong> — yours free, live only</span>
-                    </div>
-                </motion.div>
-
-                {/* CTA (escalated — implies readiness, not curiosity) */}
+                {/* CTA */}
                 <motion.div variants={fadeUp} className="text-center">
                     <RegisterButton variant="glow" size="lg">
-                        Claim My Free Seat + Bonuses
+                        Join The Live Workshop
                     </RegisterButton>
-                    <p className="text-xs text-slate-600 mt-3">No credit card. No catch. Just show up live.</p>
+                    <p className="text-xs text-slate-600 mt-3">Free to attend. No credit card required.</p>
                 </motion.div>
             </motion.div>
         </section>

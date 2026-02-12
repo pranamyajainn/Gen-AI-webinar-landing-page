@@ -4,6 +4,7 @@ import RegisterButton from '@/components/RegisterButton';
 import { cn } from '@/lib/utils';
 import { Clock } from 'lucide-react';
 import { useCountdown } from '@/hooks/useCountdown';
+import Image from 'next/image';
 
 export default function StickyHeader() {
     const { hours, minutes, seconds } = useCountdown();
@@ -19,8 +20,18 @@ export default function StickyHeader() {
                 <div className="container mx-auto px-4 lg:px-6 h-16 flex items-center justify-between">
 
                     {/* Logo / Title */}
-                    <div className="font-bold text-white text-lg tracking-tight">
-                        AI Mastery<span className="text-primary">.</span>
+                    <div className="flex items-center gap-2">
+                        <div className="relative w-8 h-8">
+                            <Image
+                                src="/namyah_logo.png"
+                                alt="Namyah Logo"
+                                fill
+                                className="object-contain"
+                            />
+                        </div>
+                        <div className="font-bold text-white text-lg tracking-tight">
+                            Namyah<span className="text-primary">.</span>
+                        </div>
                     </div>
 
                     {/* Desktop Timer Center */}

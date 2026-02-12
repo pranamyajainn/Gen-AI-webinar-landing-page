@@ -10,7 +10,7 @@ export default function CoursePublicPage() {
             {/* Nav Placeholder */}
             <div className="border-b border-white/10 bg-slate-950/50 backdrop-blur-md sticky top-0 z-50">
                 <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-                    <div className="font-bold text-white text-xl">AI Mastery<span className="text-indigo-500">.</span> Academy</div>
+                    <div className="font-bold text-white text-xl">Namyah<span className="text-indigo-500">.</span> Academy</div>
                     <Button variant="outline" size="sm" className="hidden sm:flex">Login</Button>
                 </div>
             </div>

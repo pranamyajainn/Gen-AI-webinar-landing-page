@@ -44,7 +44,7 @@ export default function ValueStackInfographic({ className }: { className?: strin
                         Everything You Get
                     </h3>
                     <p className="text-slate-400 text-xs">
-                        Inside The AI Mastery Course
+                        Inside The Namyah AI Mastery Course
                     </p>
                 </div>
 

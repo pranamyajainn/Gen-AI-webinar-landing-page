@@ -47,7 +47,7 @@ export default function CheckoutPage() {
                 {/* Header (Minimal) */}
                 <header className="flex items-center justify-between mb-8 lg:mb-12 border-b border-white/10 pb-6">
                     <div className="text-xl font-bold text-white tracking-tight">
-                        AI Mastery<span className="text-primary">.</span> Checkout
+                        Namyah<span className="text-primary">.</span> Checkout
                     </div>
                     <div className="flex items-center gap-2 text-xs lg:text-sm text-slate-400">
                         <Lock className="w-3 h-3 lg:w-4 lg:h-4 text-emerald-400" />

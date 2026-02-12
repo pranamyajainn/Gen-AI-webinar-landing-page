@@ -7,8 +7,13 @@ import RegistrationModal from "@/components/RegistrationModal";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "AI Mastery Workshop | Save Time & Supercharge Skills",
-  description: "Learn 15+ AI tools to save time, money and stay relevant in 2026. Join the free 90-minute workshop.",
+  title: 'Namyah - GenAI Mastery Workshop',
+  description: 'Join the premier GenAI workshop by Namyah. Master the tools of the future.',
+  icons: {
+    icon: '/namyah_logo.png', // Fallback to logo.png if favicon.ico is missing
+    shortcut: '/namyah_logo.png',
+    apple: '/namyah_logo.png',
+  }
 };
 
 export default function RootLayout({

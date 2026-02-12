@@ -5,10 +5,10 @@ import { Briefcase, Users, Award, Globe } from 'lucide-react';
 import Image from 'next/image';
 
 const CREDENTIALS = [
-    { icon: Briefcase, label: '10+ years in tech & automation' },
-    { icon: Users, label: 'Trained 1M+ professionals globally' },
-    { icon: Award, label: 'Featured in 50+ industry platforms' },
-    { icon: Globe, label: 'Students in 150+ countries' },
+    { icon: Briefcase, label: 'Read & Retain: Insights from multiple books' },
+    { icon: Users, label: 'Simplified AI for growing community' },
+    { icon: Award, label: 'Mentorship on learning & self-dev' },
+    { icon: Globe, label: 'Holistic growth & mindfulness' },
 ];
 
 const fadeUp = {
@@ -43,9 +43,9 @@ export default function InstructorAuthority() {
                 {/* Section Label */}
                 <motion.div variants={fadeUp} className="text-center mb-12">
                     <h2 className="text-3xl lg:text-4xl font-bold text-white">
-                        Meet Your Instructor
+                        Meet Your Instructor: <span className="text-primary">Shubhang Sethi</span>
                     </h2>
-                    <p className="text-slate-500 text-sm mt-2">Not a guru. A practitioner who teaches what he uses daily.</p>
+                    <p className="text-slate-500 text-sm mt-2">Teacher, Content Creator &amp; Personal Growth Enthusiast</p>
                 </motion.div>
 
                 <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-14">
@@ -56,8 +56,8 @@ export default function InstructorAuthority() {
                             <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-indigo-500/30 via-violet-500/20 to-transparent blur-sm" />
                             <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-slate-900 border border-white/10 shadow-2xl">
                                 <Image
-                                    src="/instructor.png"
-                                    alt="Workshop Instructor"
+                                    src="/shubhang.png"
+                                    alt="Shubhang Sethi"
                                     fill
                                     className="object-cover"
                                     sizes="(max-width: 768px) 280px, 320px"
@@ -82,12 +82,10 @@ export default function InstructorAuthority() {
                         {/* Bio */}
                         <motion.div variants={fadeUp} className="space-y-3">
                             <p className="text-slate-300 leading-relaxed">
-                                With over a decade in technology and business automation, I&apos;ve helped founders, executives, and teams
-                                integrate AI into their daily workflows — not as a novelty, but as a <strong className="text-white">force multiplier</strong>.
+                                A firm believer in the transformative power of books, Shubhang has designed a system that makes reading smarter, easier, and more impactful.
                             </p>
                             <p className="text-slate-400 text-sm leading-relaxed">
-                                I don&apos;t teach theory you&apos;ll forget by next week. I teach the exact systems I use every day to
-                                run my own business — from drafting content to analysing data to building presentations in minutes.
+                                Through the <strong className="text-white">Speed Reading Masterclass</strong>, he empowers individuals to finish books consistently, retain knowledge, and apply it meaningfully in their personal and professional lives.
                             </p>
                         </motion.div>
 
@@ -95,7 +93,7 @@ export default function InstructorAuthority() {
                         <motion.div variants={fadeUp} className="relative">
                             <div className="border-l-2 border-indigo-500/40 pl-4 py-1">
                                 <p className="text-slate-300 italic text-sm leading-relaxed">
-                                    &ldquo;My goal is simple: give you back your time so you can focus on the work that actually matters.&rdquo;
+                                    &ldquo;Books hold the power to change your life — but only if you know how to truly learn from them.&rdquo;
                                 </p>
                             </div>
                         </motion.div>
