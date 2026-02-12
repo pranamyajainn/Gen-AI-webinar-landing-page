@@ -3,14 +3,15 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Lock, Sparkles } from 'lucide-react';
 import RegisterButton from '@/components/RegisterButton';
+import { ChatGPTIcon, PerplexityIcon, GammaIcon, ClaudeIcon, NotionIcon } from '@/components/ToolIcons';
 
 /* ─── Tool Data ─── */
 const REVEALED_TOOLS = [
-    { name: 'ChatGPT', icon: '🤖', color: 'from-emerald-500/15 to-teal-500/15 border-emerald-500/20' },
-    { name: 'Perplexity', icon: '🔍', color: 'from-blue-500/15 to-indigo-500/15 border-blue-500/20' },
-    { name: 'Gamma', icon: '📊', color: 'from-orange-500/15 to-amber-500/15 border-orange-500/20' },
-    { name: 'Claude', icon: '🧠', color: 'from-violet-500/15 to-purple-500/15 border-violet-500/20' },
-    { name: 'Notion AI', icon: '📝', color: 'from-slate-400/15 to-slate-500/15 border-slate-400/20' },
+    { name: 'ChatGPT', icon: ChatGPTIcon, color: 'from-emerald-500/15 to-teal-500/15 border-emerald-500/20', iconColor: 'text-emerald-400' },
+    { name: 'Perplexity', icon: PerplexityIcon, color: 'from-blue-500/15 to-indigo-500/15 border-blue-500/20', iconColor: 'text-blue-400' },
+    { name: 'Gamma', icon: GammaIcon, color: 'from-orange-500/15 to-amber-500/15 border-orange-500/20', iconColor: 'text-orange-400' },
+    { name: 'Claude', icon: ClaudeIcon, color: 'from-violet-500/15 to-purple-500/15 border-violet-500/20', iconColor: 'text-violet-400' },
+    { name: 'Notion AI', icon: NotionIcon, color: 'from-slate-400/15 to-slate-500/15 border-slate-400/20', iconColor: 'text-slate-200' },
 ];
 
 const container = {
@@ -85,7 +86,7 @@ export default function ToolsReveal() {
                             variants={cardVariant}
                             className={`aspect-square rounded-2xl bg-gradient-to-br ${tool.color} border flex flex-col items-center justify-center gap-2.5 group hover:border-primary/40 hover:-translate-y-1 transition-all duration-300`}
                         >
-                            <span className="text-3xl lg:text-4xl group-hover:scale-110 transition-transform duration-300">{tool.icon}</span>
+                            <tool.icon className={`w-8 h-8 lg:w-10 lg:h-10 ${tool.iconColor} group-hover:scale-110 transition-transform duration-300`} />
                             <span className="font-semibold text-white text-sm lg:text-base">{tool.name}</span>
                         </motion.div>
                     ))}

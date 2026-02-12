@@ -1,36 +1,10 @@
 'use client';
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import RegisterButton from '@/components/RegisterButton';
 import { cn } from '@/lib/utils';
 import { Clock } from 'lucide-react';
-
-/* ─── Configuration ─── */
-// Default: 48 hours from first page load (persisted in sessionStorage)
-const COUNTDOWN_HOURS = 48;
-const STORAGE_KEY = 'ai_workshop_countdown_target';
-
-function getTargetTime(): number {
-    if (typeof window === 'undefined') return Date.now() + COUNTDOWN_HOURS * 3600 * 1000;
-
-    const stored = sessionStorage.getItem(STORAGE_KEY);
-    if (stored) {
-        const target = parseInt(stored, 10);
-        if (target > Date.now()) return target;
-    }
-
-    const target = Date.now() + COUNTDOWN_HOURS * 3600 * 1000;
-    sessionStorage.setItem(STORAGE_KEY, target.toString());
-    return target;
-}
-
-function computeTimeLeft(target: number) {
-    const diff = Math.max(0, target - Date.now());
-    const hours = Math.floor(diff / (1000 * 60 * 60));
-    const minutes = Math.floor((diff / (1000 * 60)) % 60);
-    const seconds = Math.floor((diff / 1000) % 60);
-    return { hours, minutes, seconds, total: diff };
-}
+import { useCountdown } from '@/hooks/useCountdown';
 
 /* ─── Animated Digit ─── */
 function AnimatedDigit({ value }: { value: string }) {
@@ -68,47 +42,32 @@ function TimeUnit({ value, label }: { value: number; label: string }) {
 
 export default function StickyCountdown() {
     const [isVisible, setIsVisible] = useState(false);
-    const targetRef = useRef<number | null>(null);
-    const [timeLeft, setTimeLeft] = useState({ hours: 0, minutes: 0, seconds: 0, total: 1 });
-
-    // Initialize target on client
-    useEffect(() => {
-        targetRef.current = getTargetTime();
-        setTimeLeft(computeTimeLeft(targetRef.current));
-    }, []);
-
-    // Tick interval
-    useEffect(() => {
-        const tick = () => {
-            if (targetRef.current) {
-                setTimeLeft(computeTimeLeft(targetRef.current));
-            }
-        };
-        const id = setInterval(tick, 1000);
-        return () => clearInterval(id);
-    }, []);
+    const { hours, minutes, seconds, total } = useCountdown();
 
     // Scroll visibility
     useEffect(() => {
         const handleScroll = () => {
             setIsVisible(window.scrollY > 300);
         };
+        // Initial check in case started scrolled down
+        handleScroll();
+
         window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     // Urgency color logic
     const getUrgencyColor = useCallback(() => {
-        if (timeLeft.total <= 15 * 60 * 1000) return 'border-red-500/30 bg-red-950/20'; // <15 min
-        if (timeLeft.total <= 60 * 60 * 1000) return 'border-amber-500/30 bg-amber-950/20'; // <1 hr
+        if (total <= 15 * 60 * 1000) return 'border-red-500/30 bg-red-950/20'; // <15 min
+        if (total <= 60 * 60 * 1000) return 'border-amber-500/30 bg-amber-950/20'; // <1 hr
         return 'border-white/10 bg-slate-900/90'; // normal
-    }, [timeLeft.total]);
+    }, [total]);
 
     const getTimerColor = useCallback(() => {
-        if (timeLeft.total <= 15 * 60 * 1000) return 'text-red-400';
-        if (timeLeft.total <= 60 * 60 * 1000) return 'text-amber-400';
+        if (total <= 15 * 60 * 1000) return 'text-red-400';
+        if (total <= 60 * 60 * 1000) return 'text-amber-400';
         return 'text-white';
-    }, [timeLeft.total]);
+    }, [total]);
 
     return (
         <motion.div
@@ -128,11 +87,11 @@ export default function StickyCountdown() {
                     </div>
 
                     <div className={cn('flex items-center gap-3', getTimerColor())}>
-                        <TimeUnit value={timeLeft.hours} label="Hrs" />
+                        <TimeUnit value={hours} label="Hrs" />
                         <span className="text-lg font-bold text-slate-600 -mt-3">:</span>
-                        <TimeUnit value={timeLeft.minutes} label="Min" />
+                        <TimeUnit value={minutes} label="Min" />
                         <span className="text-lg font-bold text-slate-600 -mt-3">:</span>
-                        <TimeUnit value={timeLeft.seconds} label="Sec" />
+                        <TimeUnit value={seconds} label="Sec" />
                     </div>
                 </div>
 

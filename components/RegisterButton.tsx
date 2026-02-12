@@ -1,11 +1,16 @@
 'use client';
+import { useRouter } from 'next/navigation';
 import { Button, ButtonProps } from '@/components/ui/Button';
-import { useRegistration } from './RegistrationContext';
 
 export default function RegisterButton({ children, ...props }: ButtonProps) {
-    const { openModal } = useRegistration();
+    const router = useRouter();
+
+    const handleClick = () => {
+        router.push('/checkout');
+    };
+
     return (
-        <Button onClick={openModal} {...props}>
+        <Button onClick={handleClick} {...props}>
             {children}
         </Button>
     );

@@ -1,29 +1,19 @@
 'use client';
-import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/Button'; // Or RegisterButton
 import RegisterButton from '@/components/RegisterButton';
 import { cn } from '@/lib/utils';
 import { Clock } from 'lucide-react';
+import { useCountdown } from '@/hooks/useCountdown';
 
 export default function StickyHeader() {
-    const [isVisible, setIsVisible] = useState(false);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            // Show after scrolling past Hero (approx 600px)
-            setIsVisible(window.scrollY > 600);
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    const { hours, minutes, seconds } = useCountdown();
 
     return (
         <header
             className={cn(
-                "fixed top-0 left-0 right-0 z-50 transition-all duration-300 transform",
-                isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"
-            )}
+                "fixed top-0 left-0 right-0 z-50 transition-all duration-300 transform translate-y-0 opacity-100"
+            )
+            }
         >
             <div className="bg-slate-950/80 backdrop-blur-md border-b border-white/10 shadow-2xl">
                 <div className="container mx-auto px-4 lg:px-6 h-16 flex items-center justify-between">
@@ -39,8 +29,8 @@ export default function StickyHeader() {
                             <Clock className="w-4 h-4" />
                             <span className="uppercase tracking-wider text-[10px]">Offers Ends In</span>
                         </div>
-                        <div className="font-mono font-bold text-white text-sm tracking-widest">
-                            00 : 14 : 49 : 10
+                        <div className="font-mono font-bold text-white text-sm tracking-widest tabular-nums">
+                            {hours.toString().padStart(2, '0')} : {minutes.toString().padStart(2, '0')} : {seconds.toString().padStart(2, '0')}
                         </div>
                     </div>
 
