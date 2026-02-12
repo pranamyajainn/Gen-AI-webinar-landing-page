@@ -99,16 +99,15 @@ export default function Hero() {
                                 AI Tools
                             </span>
                             <br className="hidden sm:block" />
-                            <span className="text-gradient-hero"> to Save Time &amp; Supercharge Your Skills</span>
+                            <span className="text-gradient-hero"> to Save Time, Money &amp; Supercharge Your Skills in this 90 Minutes Workshop</span>
                         </motion.h1>
 
                         {/* Sub-headline */}
                         <motion.p
                             variants={fadeUp}
-                            className="text-lg lg:text-xl text-slate-400 max-w-xl mx-auto lg:mx-0 leading-relaxed"
+                            className="text-lg lg:text-xl text-slate-400 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium"
                         >
-                            In this free 90-minute workshop, master the tools you need to stay relevant in 2026.
-                            Built for founders, CEOs, and decision-makers — no technical skills required.
+                            PS: Only for People Who Want to Stay Relevant in 2026
                         </motion.p>
 
                         {/* CTA Row */}
