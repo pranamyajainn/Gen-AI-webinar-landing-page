@@ -85,7 +85,7 @@ export default function Hero() {
                                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
                                     <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
                                 </span>
-                                Live Workshop — Limited Seats
+                                Join 2,000+ Founders
                             </div>
                         </motion.div>
 
@@ -94,12 +94,12 @@ export default function Hero() {
                             variants={fadeUp}
                             className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight leading-[1.08]"
                         >
-                            <span className="text-gradient-hero">Learn 15+ </span>
+                            <span className="text-gradient-hero">How to Run a </span>
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-violet-400 to-cyan-400">
-                                AI Tools
+                                10-Person Company
                             </span>
                             <br className="hidden sm:block" />
-                            <span className="text-gradient-hero"> to Save Time, Money &amp; Supercharge Your Skills in this 90 Minutes Workshop</span>
+                            <span className="text-gradient-hero"> With Just Yourself by Learning 15+ AI tools.</span>
                         </motion.h1>
 
                         {/* Sub-headline */}
@@ -107,7 +107,7 @@ export default function Hero() {
                             variants={fadeUp}
                             className="text-lg lg:text-xl text-slate-400 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium"
                         >
-                            PS: Only for People Who Want to Stay Relevant in 2026
+                            The Non-Tech Founder’s Guide to Reclaiming 20 Hours a Week. Join the "GenAI Mastery" Workshop. <span className="text-slate-300 italic">No coding required.</span>
                         </motion.p>
 
                         {/* CTA Row */}
@@ -116,7 +116,7 @@ export default function Hero() {
                             className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center"
                         >
                             <RegisterButton size="magnetic" variant="glow" className="w-full sm:w-auto group">
-                                REGISTER FOR FREE
+                                SAVE MY FREE SEAT
                                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1.5 transition-transform duration-300" />
                             </RegisterButton>
                             <div className="flex items-center gap-2 text-sm text-slate-400">

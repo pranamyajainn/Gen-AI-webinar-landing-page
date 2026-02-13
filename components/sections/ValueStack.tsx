@@ -7,32 +7,32 @@ import { Zap, Brain, Rocket, Globe, Layers } from 'lucide-react';
 const LEVERAGE_PILLARS = [
     {
         icon: Brain,
-        title: "Think in AI, Not Prompts",
-        outcome: "Stop guessing. Learn the mental model behind every successful output so you never struggle with a blank page again.",
+        title: "The Inbox Assassin",
+        outcome: "Write personal, high-conversion emails in 12 seconds. Clear your inbox before your coffee gets cold.",
         gradient: "from-violet-500/20 to-fuchsia-500/20",
         border: "border-violet-500/20",
         iconColor: "text-violet-400"
     },
     {
         icon: Zap,
-        title: "Move 10x Faster Without Hiring",
-        outcome: "Replace repetitive writing, research, and data crunching instantly. Do the work of a team of 5, solo.",
+        title: "The Ghost Researcher",
+        outcome: "Turn 50-page industry reports into 3-bullet action items instantly. Know more than your competitors in 1/10th the time.",
         gradient: "from-blue-500/20 to-cyan-500/20",
         border: "border-blue-500/20",
         iconColor: "text-blue-400"
     },
     {
         icon: Rocket,
-        title: "Ship Campaigns in Hours",
-        outcome: "Generate studio-quality ads, landing pages, and email sequences without waiting on agencies.",
+        title: "The Instant Agency",
+        outcome: "Build pitch decks, ad creatives, and campaign assets without waiting on a designer.",
         gradient: "from-amber-500/20 to-orange-500/20",
         border: "border-amber-500/20",
         iconColor: "text-amber-400"
     },
     {
         icon: Layers,
-        title: "Build Assets Without Code",
-        outcome: "Launch lead magnets, automations, and websites in minutes. Take full control of your tech stack.",
+        title: "The Meeting Ghost",
+        outcome: "Automate your presence—have AI take notes, assign tasks, and follow up while you focus on strategy.",
         gradient: "from-emerald-500/20 to-teal-500/20",
         border: "border-emerald-500/20",
         iconColor: "text-emerald-400"
@@ -68,16 +68,14 @@ export default function ValueStack() {
                 <div className="text-center mb-20 max-w-3xl mx-auto">
                     <motion.div variants={fadeUp} className="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-slate-300 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest mb-6">
                         <Globe className="w-3.5 h-3.5" />
-                        Founder Leverage Framework
+                        No More Hiring Fatigue
                     </motion.div>
                     <motion.h2 variants={fadeUp} className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
-                        Stop delegating to people. <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">
-                            Start delegating to AI.
-                        </span>
+                        Install <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">"The Founder's AI OS"</span> <br />
+                        in One Afternoon.
                     </motion.h2>
                     <motion.p variants={fadeUp} className="text-lg text-slate-400 leading-relaxed max-w-2xl mx-auto">
-                        This isn't just about learning tools. It's about installing a new operating system for your business that defaults to speed.
+                        This isn't just about learning tools. It's about building a "Ghost Team" that defaults to speed.
                     </motion.p>
                 </div>
 

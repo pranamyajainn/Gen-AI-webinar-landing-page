@@ -5,19 +5,19 @@ import RegisterButton from '@/components/RegisterButton';
 
 const quotes = [
     {
-        text: "Cut my weekly reporting time from 6 hours to under 90 minutes. Essential for any PM.",
-        author: "Priya S.",
-        role: "Growth PM, Fintech"
+        text: "I went from working 70 hours a week to 45 by implementing just two of the workflows here. It felt like cheating.",
+        author: "Arjun M.",
+        role: "Founder, Stealth Startup"
     },
     {
-        text: "I thought I knew ChatGPT, but the tools revealed here were on another level.",
-        author: "David K.",
-        role: "Founder, Agency"
-    },
-    {
-        text: "Direct, actionable, and zero fluff. The best 90 minutes I spent this year.",
+        text: "I fired my $5k/mo agency because I realized I could do a better job myself in 30 minutes with this stack.",
         author: "Sarah L.",
-        role: "Marketing Director"
+        role: "DTC Founder"
+    },
+    {
+        text: "Finally, a workshop that respects a founder's time. Zero fluff, just lethal workflows.",
+        author: "David K.",
+        role: "SaaS Founder"
     }
 ];
 

@@ -45,17 +45,17 @@ export default function FinalCommitment() {
                     variants={fadeUp}
                     className="text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight"
                 >
-                    Still Not Convinced?
+                    Stop Working <span className="text-indigo-400">In</span> Your Business. <br />
+                    Start Working <span className="text-cyan-400">On</span> It.
                 </motion.h2>
 
                 <motion.div variants={fadeUp} className="space-y-4 mb-10">
                     <p className="text-slate-400 leading-relaxed">
-                        You&apos;ve read this far, which means you already know AI can change the way you work.
-                        The only question left is whether you&apos;ll start now or keep thinking about it.
+                        The only difference between a burnt-out founder and a visionary is their operating system.
+                        You have the vision. Now give yourself the time to execute it.
                     </p>
                     <p className="text-slate-500 text-sm leading-relaxed">
-                        This workshop is free. It takes 90 minutes. And 1M+ professionals have already done exactly
-                        what you&apos;re considering right now. There is genuinely nothing to lose.
+                        This workshop is free, but the 20 hours a week you'll save is priceless.
                     </p>
                 </motion.div>
 

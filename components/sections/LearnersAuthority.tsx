@@ -102,10 +102,10 @@ export default function LearnersAuthority() {
                         <AnimatedCounter target={1000000} inView={isInView} />+
                     </div>
                     <h2 className="text-2xl lg:text-3xl font-bold text-white mb-2">
-                        Learners Already Ahead of You
+                        Founders Already Ahead of You
                     </h2>
                     <p className="text-slate-400 max-w-md mx-auto">
-                        Professionals across 150+ countries have already transformed their workflow.
+                        Join the top 1% of founders who have stopped working *in* their business and started working *on* it.
                     </p>
                 </motion.div>
 

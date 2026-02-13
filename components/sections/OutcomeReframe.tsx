@@ -50,11 +50,11 @@ export default function OutcomeReframe() {
                 {/* Header */}
                 <motion.div variants={fadeUp} className="mb-16">
                     <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">
-                        What Changes In Your <br className="hidden lg:block" />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-200 to-slate-400">Actual Week</span>
+                        Most Founders Are Drowning in <br className="hidden lg:block" />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-400">"Work About Work"</span>
                     </h3>
                     <p className="text-slate-500 text-base max-w-lg">
-                        Not hypothetical. Not aspirational. This is what Monday looks like after you attend.
+                        You didn't start a company to be an administrator. But here you are—writing emails, formatting decks, and researching competitors until 10 PM.
                     </p>
                 </motion.div>
 
@@ -68,7 +68,7 @@ export default function OutcomeReframe() {
                         >
                             {/* BEFORE */}
                             <div className="bg-slate-900/50 border border-white/[0.04] rounded-2xl p-6 md:rounded-r-none md:border-r-0 flex flex-col justify-center">
-                                <span className="text-[11px] font-semibold uppercase tracking-widest text-red-400/70 mb-2">Before</span>
+                                <span className="text-[11px] font-semibold uppercase tracking-widest text-red-400/70 mb-2">The Old Way</span>
                                 <p className="text-slate-400 leading-relaxed text-[15px]">{shift.before}</p>
                             </div>
 
@@ -82,7 +82,7 @@ export default function OutcomeReframe() {
 
                             {/* AFTER */}
                             <div className="bg-indigo-500/[0.04] border border-indigo-500/10 rounded-2xl p-6 md:rounded-l-none md:border-l-0 flex flex-col justify-center">
-                                <span className="text-[11px] font-semibold uppercase tracking-widest text-indigo-400/70 mb-2">After</span>
+                                <span className="text-[11px] font-semibold uppercase tracking-widest text-indigo-400/70 mb-2">The Founder's AI OS</span>
                                 <p className="text-white leading-relaxed text-[15px] font-medium">{shift.after}</p>
                             </div>
                         </motion.div>
