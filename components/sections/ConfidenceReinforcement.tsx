@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ShieldCheck, CheckCircle2 } from 'lucide-react';
 import RegisterButton from '@/components/RegisterButton';
+import { fadeUp, staggerContainer } from '@/lib/motion';
 
 const REASSURANCES = [
     'Free to attend — no credit card, no hidden fees',
@@ -11,24 +12,16 @@ const REASSURANCES = [
     'Actionable from day one — no homework required',
 ];
 
-const fadeUp = {
-    hidden: { opacity: 0, y: 12 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' as const } },
-};
-
-const container = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.15 } },
-};
+const container = staggerContainer(0.08, 0.15);
 
 export default function ConfidenceReinforcement() {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: '-60px' });
 
     return (
-        <section id="confidence" className="py-14 lg:py-20 bg-slate-900/30 border-y border-white/[0.04] relative" ref={ref}>
+        <section id="confidence" className="py-14 lg:py-20 bg-slate-900/30 border-y border-white/[0.04] relative section-glow-cyan" ref={ref}>
             <motion.div
-                className="container mx-auto px-4 max-w-2xl text-center relative z-10"
+                className="container mx-auto px-5 lg:px-8 max-w-2xl text-center relative z-10"
                 variants={container}
                 initial="hidden"
                 animate={isInView ? 'visible' : 'hidden'}
@@ -38,9 +31,9 @@ export default function ConfidenceReinforcement() {
                     <ShieldCheck className="w-6 h-6 text-emerald-400" />
                 </motion.div>
 
-                <motion.h3 variants={fadeUp} className="text-xl lg:text-2xl font-bold text-white mb-2">
+                <motion.h2 variants={fadeUp} className="text-xl lg:text-2xl font-bold text-white mb-2">
                     Zero Risk. Full Upside.
-                </motion.h3>
+                </motion.h2>
                 <motion.p variants={fadeUp} className="text-slate-500 text-sm mb-8 max-w-md mx-auto">
                     You&apos;re 90 minutes away from a fundamentally different way of working.
                 </motion.p>
@@ -51,7 +44,7 @@ export default function ConfidenceReinforcement() {
                         <motion.div
                             key={text}
                             variants={fadeUp}
-                            className="inline-flex items-center gap-1.5 bg-slate-900/60 border border-white/[0.05] rounded-full px-3.5 py-1.5 text-xs text-slate-400"
+                            className="inline-flex items-center gap-1.5 bg-white/[0.03] backdrop-blur-sm border border-white/[0.08] rounded-full px-3.5 py-1.5 text-xs text-slate-400 hover:bg-white/[0.06] hover:scale-[1.02] transition-all duration-200"
                         >
                             <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500/70" />
                             {text}

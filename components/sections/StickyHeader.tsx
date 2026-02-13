@@ -17,7 +17,7 @@ export default function StickyHeader() {
             }
         >
             <div className="bg-slate-950/80 backdrop-blur-md border-b border-white/10 shadow-2xl">
-                <div className="container mx-auto px-4 lg:px-6 h-16 flex items-center justify-between">
+                <div className="container mx-auto px-5 lg:px-8 h-16 flex items-center justify-between">
 
                     {/* Logo / Title */}
                     <div className="flex items-center gap-2">

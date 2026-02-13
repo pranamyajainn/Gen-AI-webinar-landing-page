@@ -1,7 +1,7 @@
 export default function Footer() {
     return (
         <footer id="footer-s7" className="bg-slate-950 border-t border-slate-800 py-12 text-slate-500 text-sm">
-            <div className="container mx-auto px-4 lg:px-6">
+            <div className="container mx-auto px-5 lg:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
                     <div>
                         <h3 className="text-white font-bold mb-4">Namyah</h3>

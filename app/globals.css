@@ -28,6 +28,42 @@
   --color-glow: #a78bfa;
   /* Violet 400 – used for outer glow rings */
   --color-surface-elevated: #0f172a;
+
+  /* ── Borders (semantic) ── */
+  --color-border-hover: rgba(255, 255, 255, 0.12);
+  --color-border-active: rgba(124, 58, 237, 0.4);
+
+  /* ── Semantic ── */
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+
+  /* ── Spacing ── */
+  --space-section-sm: 3rem;
+  --space-section-md: 5rem;
+  --space-section-lg: 7rem;
+
+  /* ── Radius ── */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+
+  /* ── Shadows ── */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 20px rgba(124, 58, 237, 0.3);
+  --shadow-glow-hover: 0 0 30px rgba(124, 58, 237, 0.5), 0 0 60px rgba(124, 58, 237, 0.15);
+
+  /* ── Motion ── */
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-slow: 500ms;
+  --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  /* ── Focus ── */
+  --focus-ring: 0 0 0 2px var(--color-background), 0 0 0 4px var(--color-primary);
 }
 
 /* Custom Base Styles */
@@ -38,12 +74,6 @@ body {
 }
 
 @layer utilities {
-  .glass {
-    background: rgba(15, 23, 42, 0.6);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-  }
-
   .text-gradient {
     background-clip: text;
     -webkit-background-clip: text;
@@ -51,22 +81,11 @@ body {
     background-image: linear-gradient(to right, #f8fafc, #94a3b8);
   }
 
-  .text-gradient-primary {
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    background-image: linear-gradient(to right, #a78bfa, #22d3ee);
-  }
-
   .text-gradient-hero {
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
     background-image: linear-gradient(180deg, #ffffff 0%, #94a3b8 100%);
-  }
-
-  .animate-fade-in-up {
-    animation: fadeInUp 0.8s ease-out forwards;
   }
 
   .surface-glow {
@@ -92,32 +111,9 @@ body {
     background-size: 32px 32px;
   }
 
-  .animate-shimmer {
-    animation: shimmer 2.5s ease-in-out infinite;
-  }
-
-  .animate-glow-pulse {
-    animation: glowPulse 2s ease-in-out infinite;
-  }
-
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
 }
 
-/* Keyframes */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* ── Shimmer (hover-only on glow buttons) ── */
 @keyframes shimmer {
   0% {
     background-position: -200% center;
@@ -128,63 +124,9 @@ body {
   }
 }
 
-@keyframes glowPulse {
-
-  0%,
-  100% {
-    box-shadow: 0 0 20px rgba(124, 58, 237, 0.4),
-      0 0 60px rgba(124, 58, 237, 0.1);
-  }
-
-  50% {
-    box-shadow: 0 0 30px rgba(124, 58, 237, 0.6),
-      0 0 80px rgba(124, 58, 237, 0.2);
-  }
-}
-
-@keyframes float {
-
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
-@keyframes digitFlip {
-  0% {
-    transform: rotateX(0deg);
-    opacity: 1;
-  }
-
-  50% {
-    transform: rotateX(-90deg);
-    opacity: 0;
-  }
-
-  51% {
-    transform: rotateX(90deg);
-    opacity: 0;
-  }
-
-  100% {
-    transform: rotateX(0deg);
-    opacity: 1;
-  }
-}
-
-@keyframes ripple {
-  0% {
-    transform: scale(1);
-    opacity: 0.4;
-  }
-
-  100% {
-    transform: scale(2.5);
-    opacity: 0;
+@layer utilities {
+  .animate-shimmer {
+    animation: shimmer 2.5s ease-in-out infinite;
   }
 }
 
@@ -208,16 +150,6 @@ body {
   }
 }
 
-@keyframes shimmer-card {
-  0% {
-    background-position: -200% center;
-  }
-
-  100% {
-    background-position: 200% center;
-  }
-}
-
 @layer utilities {
   .animate-marquee-left {
     animation: marquee-left 40s linear infinite;
@@ -229,5 +161,224 @@ body {
 
   .pause-on-hover:hover {
     animation-play-state: paused;
+  }
+
+  .text-gradient-brand {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to right, #818cf8, #7c3aed, #22d3ee);
+  }
+}
+
+/* ── Border Beam ── */
+@keyframes border-beam {
+  0% {
+    offset-distance: 0%;
+  }
+
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+@layer utilities {
+  .border-beam {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .border-beam::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: conic-gradient(from var(--beam-angle, 0deg),
+        transparent 0%,
+        transparent 76%,
+        var(--beam-color, rgba(124, 58, 237, 0.6)) 80%,
+        var(--beam-color-bright, rgba(167, 139, 250, 0.9)) 84%,
+        transparent 88%,
+        transparent 100%);
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+    animation: border-beam-rotate 4s linear infinite;
+    pointer-events: none;
+  }
+}
+
+@keyframes border-beam-rotate {
+  from {
+    --beam-angle: 0deg;
+  }
+
+  to {
+    --beam-angle: 360deg;
+  }
+}
+
+/* Fallback since @property isn't universally supported — use a transform-based rotation */
+@layer utilities {
+  .border-beam::after {
+    animation: none;
+  }
+
+  .border-beam::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background: conic-gradient(transparent 0deg,
+        transparent 270deg,
+        rgba(124, 58, 237, 0.5) 290deg,
+        rgba(167, 139, 250, 0.8) 310deg,
+        transparent 330deg,
+        transparent 360deg);
+    animation: border-beam-spin 4s linear infinite;
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
+  /* Mask the inside so only the border edge shows */
+  .border-beam {
+    isolation: isolate;
+  }
+}
+
+@keyframes border-beam-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── Floating Particles ── */
+@keyframes float-up {
+
+  0%,
+  100% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(-120px) translateX(20px) scale(1.2);
+  }
+}
+
+@keyframes float-drift {
+
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.3;
+  }
+
+  25% {
+    transform: translateY(-30px) translateX(15px);
+    opacity: 0.6;
+  }
+
+  50% {
+    transform: translateY(-50px) translateX(-10px);
+    opacity: 0.4;
+  }
+
+  75% {
+    transform: translateY(-20px) translateX(-20px);
+    opacity: 0.5;
+  }
+}
+
+@layer utilities {
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.4), transparent 70%);
+  }
+
+  .particle-drift {
+    animation: float-drift 8s ease-in-out infinite;
+  }
+}
+
+/* ── Section Glow ── */
+@layer utilities {
+  .section-glow-purple {
+    position: relative;
+  }
+
+  .section-glow-purple::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 300px;
+    background: radial-gradient(ellipse at center, rgba(124, 58, 237, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .section-glow-cyan {
+    position: relative;
+  }
+
+  .section-glow-cyan::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 300px;
+    background: radial-gradient(ellipse at center, rgba(34, 211, 238, 0.04) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Glassmorphism card */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-card-hover:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

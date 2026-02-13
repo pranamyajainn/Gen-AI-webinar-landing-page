@@ -4,6 +4,8 @@ import { useRef } from 'react';
 import { Lock, Sparkles } from 'lucide-react';
 import RegisterButton from '@/components/RegisterButton';
 import { ChatGPTIcon, PerplexityIcon, GammaIcon, ClaudeIcon, NotionIcon } from '@/components/ToolIcons';
+import { staggerContainer } from '@/lib/motion';
+import { cn } from '@/lib/utils';
 
 /* ─── Tool Data ─── */
 const REVEALED_TOOLS = [
@@ -14,13 +16,7 @@ const REVEALED_TOOLS = [
     { name: 'Notion AI', icon: NotionIcon, color: 'from-slate-400/15 to-slate-500/15 border-slate-400/20', iconColor: 'text-slate-200' },
 ];
 
-const container = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: { staggerChildren: 0.08, delayChildren: 0.2 },
-    },
-};
+const container = staggerContainer(0.08, 0.2);
 
 const cardVariant = {
     hidden: { opacity: 0, y: 16, scale: 0.95 },
@@ -43,14 +39,14 @@ export default function ToolsReveal() {
                 aria-hidden="true"
             />
 
-            <div className="container mx-auto px-4 relative z-10">
+            <div className="container mx-auto px-5 lg:px-8 relative z-10">
                 {/* "15+" Dominant Number */}
                 <div className="text-center mb-6">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={isInView ? { opacity: 1, scale: 1 } : {}}
                         transition={{ duration: 0.6, ease: 'easeOut' as const }}
-                        className="text-7xl sm:text-8xl lg:text-9xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-violet-400 to-cyan-400 leading-none mb-2"
+                        className="text-7xl sm:text-8xl lg:text-9xl font-extrabold text-gradient-brand leading-none mb-2"
                     >
                         15+
                     </motion.div>
@@ -84,9 +80,9 @@ export default function ToolsReveal() {
                         <motion.div
                             key={tool.name}
                             variants={cardVariant}
-                            className={`aspect-square rounded-2xl bg-gradient-to-br ${tool.color} border flex flex-col items-center justify-center gap-2.5 group hover:border-primary/40 hover:-translate-y-1 transition-all duration-300`}
+                            className={cn('aspect-square rounded-2xl bg-gradient-to-br border flex flex-col items-center justify-center gap-2.5 group hover:border-primary/40 hover:-translate-y-1 hover:shadow-lg hover:shadow-indigo-500/10 transition-all duration-300 backdrop-blur-sm', tool.color)}
                         >
-                            <tool.icon className={`w-8 h-8 lg:w-10 lg:h-10 ${tool.iconColor} group-hover:scale-110 transition-transform duration-300`} />
+                            <tool.icon className={cn('w-8 h-8 lg:w-10 lg:h-10 group-hover:scale-110 transition-transform duration-300', tool.iconColor)} />
                             <span className="font-semibold text-white text-sm lg:text-base">{tool.name}</span>
                         </motion.div>
                     ))}
@@ -96,21 +92,10 @@ export default function ToolsReveal() {
                         <motion.div
                             key={`locked-${i}`}
                             variants={cardVariant}
-                            className="aspect-square rounded-2xl bg-slate-800/40 border border-white/[0.04] flex items-center justify-center relative overflow-hidden group hover:border-primary/20 transition-all duration-300"
+                            className="aspect-square rounded-2xl bg-slate-800/40 border border-white/[0.04] flex items-center justify-center relative overflow-hidden group hover:border-primary/20 hover:shadow-md hover:shadow-violet-500/5 transition-all duration-300"
                         >
                             {/* Subtle glass blur — not heavy */}
                             <div className="absolute inset-0 backdrop-blur-[2px] bg-gradient-to-br from-slate-800/60 to-slate-900/80" />
-
-                            {/* Shimmer sweep */}
-                            <div
-                                className="absolute inset-0 opacity-30"
-                                style={{
-                                    backgroundImage: 'linear-gradient(110deg, transparent 30%, rgba(255,255,255,0.05) 50%, transparent 70%)',
-                                    backgroundSize: '200% 100%',
-                                    animation: 'shimmer-card 3s ease-in-out infinite',
-                                    animationDelay: `${i * 0.2}s`,
-                                }}
-                            />
 
                             <div className="relative z-10 flex flex-col items-center gap-1.5 opacity-40 group-hover:opacity-70 transition-opacity duration-300">
                                 <Sparkles className="w-5 h-5 text-slate-400" />

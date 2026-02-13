@@ -29,7 +29,7 @@ export default function QuoteCarousel() {
 
     return (
         <section id="sp-2" className="py-16 bg-slate-900 border-y border-white/5 relative">
-            <div className="container mx-auto px-4 max-w-4xl">
+            <div className="container mx-auto px-5 lg:px-8 max-w-4xl">
                 <div className="text-center">
                     <Quote className="h-12 w-12 text-primary/30 mx-auto mb-6" />
 

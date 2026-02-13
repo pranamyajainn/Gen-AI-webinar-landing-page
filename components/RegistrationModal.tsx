@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { useRegistration } from './RegistrationContext';
 import { Button } from './ui/Button';
+import { Input } from './ui/Input';
 import { X, Loader2, CheckCircle } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -79,21 +80,20 @@ export default function RegistrationModal() {
                         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                             <div className="space-y-2">
                                 <label className="text-sm font-medium text-slate-300">Name (Optional)</label>
-                                <input
+                                <Input
                                     type="text"
                                     {...register('name')}
-                                    className="w-full bg-slate-800 border-slate-700 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
                                     placeholder="Your Name"
                                 />
                             </div>
 
                             <div className="space-y-2">
                                 <label className="text-sm font-medium text-slate-300">Email Address</label>
-                                <input
+                                <Input
                                     type="email"
                                     {...register('email')}
-                                    className="w-full bg-slate-800 border-slate-700 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
                                     placeholder="you@company.com"
+                                    error={!!errors.email}
                                 />
                                 {errors.email && <p className="text-red-400 text-xs">{errors.email.message}</p>}
                             </div>

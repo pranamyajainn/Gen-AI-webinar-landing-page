@@ -12,7 +12,7 @@ export default function ComplianceFooter() {
 
     return (
         <footer id="footer" className="bg-slate-950 border-t border-white/[0.04] pt-12 pb-24 relative">
-            <div className="container mx-auto px-4 max-w-5xl">
+            <div className="container mx-auto px-5 lg:px-8 max-w-5xl">
                 {/* Top row — brand + contact */}
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8 mb-10">
                     <div>
@@ -39,7 +39,7 @@ export default function ComplianceFooter() {
                         <a
                             key={label}
                             href={href}
-                            className="text-xs text-slate-600 hover:text-slate-400 transition-colors"
+                            className="text-xs text-slate-600 hover:text-slate-400 transition-colors py-1 inline-block"
                         >
                             {label}
                         </a>
@@ -47,7 +47,7 @@ export default function ComplianceFooter() {
                 </div>
 
                 {/* Disclaimers — ad-platform compliance */}
-                <div className="border-t border-white/[0.04] pt-8 space-y-4 text-[11px] text-slate-700 leading-relaxed">
+                <div className="border-t border-white/[0.04] pt-8 space-y-4 text-[11px] text-slate-500 leading-relaxed">
                     <p>
                         This site is not a part of the Facebook&trade; website or Facebook Inc. Additionally, this site
                         is NOT endorsed by Facebook in any way. FACEBOOK is a trademark of META PLATFORMS, Inc.
@@ -66,7 +66,7 @@ export default function ComplianceFooter() {
                         OpenAI, Microsoft, Google, or any other third-party tool provider mentioned on this page.
                     </p>
 
-                    <p className="pt-4 text-slate-700">
+                    <p className="pt-4 text-slate-500">
                         &copy; {year} AI Mastery Workshop. All Rights Reserved.
                     </p>
                 </div>

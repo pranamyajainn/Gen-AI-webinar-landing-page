@@ -3,6 +3,8 @@ import { useRef, useEffect, useState } from 'react';
 import { motion, useInView, animate } from 'framer-motion';
 import { Globe, Star, Building2 } from 'lucide-react';
 import RegisterButton from '@/components/RegisterButton';
+import { fadeUp, staggerContainer } from '@/lib/motion';
+import { cn } from '@/lib/utils';
 
 /* ─── Avatar Grid Data ─── */
 const AVATARS = [
@@ -60,18 +62,7 @@ function AnimatedCounter({ target, inView }: { target: number; inView: boolean }
     return <span ref={ref} />;
 }
 
-const container = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: { staggerChildren: 0.1, delayChildren: 0.3 },
-    },
-};
-
-const fadeUp = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' as const } },
-};
+const container = staggerContainer(0.1, 0.3);
 
 export default function LearnersAuthority() {
     const ref = useRef(null);
@@ -85,20 +76,20 @@ export default function LearnersAuthority() {
         >
             {/* Background glow */}
             <div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full opacity-20 blur-[120px] pointer-events-none"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full opacity-10 blur-[120px] pointer-events-none"
                 style={{ background: 'radial-gradient(circle, rgba(34,211,238,0.3), transparent 70%)' }}
                 aria-hidden="true"
             />
 
             <motion.div
-                className="container mx-auto px-4 relative z-10"
+                className="container mx-auto px-5 lg:px-8 relative z-10"
                 variants={container}
                 initial="hidden"
                 animate={isInView ? 'visible' : 'hidden'}
             >
                 {/* Main Counter */}
                 <motion.div variants={fadeUp} className="text-center mb-10">
-                    <div className="text-6xl sm:text-7xl lg:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-violet-400 to-cyan-400 mb-3 tabular-nums">
+                    <div className="text-6xl sm:text-7xl lg:text-8xl font-extrabold text-gradient-brand mb-3 tabular-nums">
                         <AnimatedCounter target={1000000} inView={isInView} />+
                     </div>
                     <h2 className="text-2xl lg:text-3xl font-bold text-white mb-2">
@@ -120,7 +111,7 @@ export default function LearnersAuthority() {
                             initial={{ opacity: 0, scale: 0.5 }}
                             animate={isInView ? { opacity: 1, scale: 1 } : {}}
                             transition={{ delay: 0.4 + i * 0.03, duration: 0.3, ease: 'easeOut' as const }}
-                            className={`w-10 h-10 lg:w-11 lg:h-11 rounded-full bg-gradient-to-br ${color} flex items-center justify-center text-[10px] font-bold text-white shadow-md border border-white/10`}
+                            className={cn('w-10 h-10 lg:w-11 lg:h-11 rounded-full bg-gradient-to-br flex items-center justify-center text-[10px] font-bold text-white shadow-md border border-white/10', color)}
                         >
                             {initials}
                         </motion.div>

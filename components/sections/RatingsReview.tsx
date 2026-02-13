@@ -3,7 +3,7 @@ import { Star } from 'lucide-react';
 export default function RatingsReview() {
     return (
         <section id="sp-6" className="py-16 bg-slate-950 border-t border-white/5">
-            <div className="container mx-auto px-4 text-center">
+            <div className="container mx-auto px-5 lg:px-8 text-center">
                 <div className="flex items-center justify-center gap-1 mb-4">
                     {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" />)}
                 </div>

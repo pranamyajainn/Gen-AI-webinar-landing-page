@@ -2,33 +2,11 @@
 import { motion } from 'framer-motion';
 import RegisterButton from '@/components/RegisterButton';
 import { ArrowRight, Star, Clock, Play, Users, Zap, Shield } from 'lucide-react';
+import { fadeUp, staggerContainer, scaleIn } from '@/lib/motion';
+import { cn } from '@/lib/utils';
 
 /* ─── Animation Orchestration ─── */
-const container = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: { staggerChildren: 0.15, delayChildren: 0.2 },
-    },
-};
-
-const fadeUp = {
-    hidden: { opacity: 0, y: 24 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.7, ease: 'easeOut' as const },
-    },
-};
-
-const scaleIn = {
-    hidden: { opacity: 0, scale: 0.92 },
-    visible: {
-        opacity: 1,
-        scale: 1,
-        transition: { duration: 0.8, ease: 'easeOut' as const },
-    },
-};
+const container = staggerContainer(0.15, 0.2);
 
 /* ─── Data ─── */
 const AVATAR_INITIALS = ['AK', 'SR', 'MJ', 'PD', 'NR'];
@@ -67,8 +45,14 @@ export default function Hero() {
                 aria-hidden="true"
             />
 
+            {/* Floating Particles */}
+            <div className="particle particle-drift w-2 h-2 top-[15%] left-[10%] opacity-30" style={{ animationDelay: '0s', animationDuration: '10s' }} aria-hidden="true" />
+            <div className="particle particle-drift w-3 h-3 top-[60%] left-[80%] opacity-20" style={{ animationDelay: '2s', animationDuration: '12s' }} aria-hidden="true" />
+            <div className="particle particle-drift w-1.5 h-1.5 top-[40%] left-[25%] opacity-25" style={{ animationDelay: '4s', animationDuration: '9s' }} aria-hidden="true" />
+            <div className="particle particle-drift w-2.5 h-2.5 top-[75%] left-[60%] opacity-15" style={{ animationDelay: '6s', animationDuration: '14s' }} aria-hidden="true" />
+
             {/* ── Content Grid ── */}
-            <div className="container mx-auto px-4 lg:px-8 relative z-10">
+            <div className="container mx-auto px-5 lg:px-8 relative z-10">
                 <motion.div
                     className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center"
                     variants={container}
@@ -82,7 +66,7 @@ export default function Hero() {
                         <motion.div variants={fadeUp} className="flex justify-center lg:justify-start">
                             <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium">
                                 <span className="relative flex h-2 w-2">
-                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" style={{ animationIterationCount: 3 }} />
                                     <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
                                 </span>
                                 Join 2,000+ Founders
@@ -95,7 +79,7 @@ export default function Hero() {
                             className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight leading-[1.08]"
                         >
                             <span className="text-gradient-hero">How to Run a </span>
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-violet-400 to-cyan-400">
+                            <span className="text-gradient-brand">
                                 10-Person Company
                             </span>
                             <br className="hidden sm:block" />
@@ -135,7 +119,7 @@ export default function Hero() {
                                 {AVATAR_INITIALS.map((initials, i) => (
                                     <div
                                         key={i}
-                                        className={`w-9 h-9 rounded-full border-2 border-background bg-gradient-to-br ${AVATAR_COLORS[i]} flex items-center justify-center text-[10px] font-bold text-white shadow-lg`}
+                                        className={cn('w-9 h-9 rounded-full border-2 border-background bg-gradient-to-br flex items-center justify-center text-[10px] font-bold text-white shadow-lg', AVATAR_COLORS[i])}
                                     >
                                         {initials}
                                     </div>
@@ -175,7 +159,7 @@ export default function Hero() {
                         />
 
                         {/* Video Frame */}
-                        <div className="relative rounded-2xl border border-white/[0.08] bg-slate-900/60 backdrop-blur-sm p-1.5 shadow-2xl surface-glow animate-float">
+                        <div className="relative rounded-2xl border border-white/[0.08] bg-slate-900/60 backdrop-blur-sm p-1.5 shadow-2xl surface-glow">
                             <div className="aspect-video rounded-xl bg-slate-800/80 overflow-hidden relative">
 
                                 {/* Inner subtle gradient */}
@@ -191,8 +175,8 @@ export default function Hero() {
                                         aria-label="Play workshop preview"
                                     >
                                         {/* Ripple rings */}
-                                        <span className="absolute inset-0 rounded-full border-2 border-primary/40 animate-ping" style={{ animationDuration: '2s' }} />
-                                        <span className="absolute -inset-3 rounded-full border border-primary/20 animate-ping" style={{ animationDuration: '2.5s', animationDelay: '0.5s' }} />
+                                        <span className="absolute inset-0 rounded-full border-2 border-primary/40 animate-ping" style={{ animationDuration: '2s', animationIterationCount: 3 }} />
+                                        <span className="absolute -inset-3 rounded-full border border-primary/20 animate-ping" style={{ animationDuration: '2.5s', animationDelay: '0.5s', animationIterationCount: 3 }} />
                                         <Play className="h-6 w-6 lg:h-8 lg:w-8 text-white fill-white ml-1 group-hover:scale-110 transition-transform" />
                                     </button>
                                 </div>
@@ -201,7 +185,7 @@ export default function Hero() {
                                 {VIDEO_BADGES.map(({ icon: Icon, label, position }) => (
                                     <div
                                         key={label}
-                                        className={`absolute ${position} z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-900/80 backdrop-blur-sm border border-white/10 text-xs font-medium text-slate-300`}
+                                        className={cn('absolute z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-900/80 backdrop-blur-sm border border-white/10 text-xs font-medium text-slate-300', position)}
                                     >
                                         <Icon className="h-3 w-3 text-cyan-400" />
                                         {label}

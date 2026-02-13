@@ -1,5 +1,6 @@
 'use client';
 import { Star } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 /* ─── Testimonial Data (12+ realistic entries) ─── */
 const TESTIMONIALS_ROW_1 = [
@@ -26,9 +27,9 @@ function TestimonialCard({ name, role, text, rating, color }: {
 }) {
     const initials = name.split(' ').map(n => n[0]).join('');
     return (
-        <div className="flex-shrink-0 w-[340px] p-5 rounded-2xl bg-slate-900/80 border border-white/[0.06] backdrop-blur-sm hover:border-white/10 transition-colors duration-300 group">
+        <div className="flex-shrink-0 w-[340px] p-5 rounded-2xl bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] hover:border-white/[0.14] hover:-translate-y-1 hover:shadow-lg hover:shadow-indigo-500/5 transition-all duration-300 group">
             <div className="flex items-center gap-3 mb-3">
-                <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${color} flex items-center justify-center text-xs font-bold text-white shadow-lg`}>
+                <div className={cn('w-10 h-10 rounded-full bg-gradient-to-br flex items-center justify-center text-xs font-bold text-white shadow-lg', color)}>
                     {initials}
                 </div>
                 <div>
@@ -57,7 +58,7 @@ function MarqueeRow({ testimonials, direction }: { testimonials: typeof TESTIMON
             <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-slate-950 to-transparent z-10 pointer-events-none" />
             <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-slate-950 to-transparent z-10 pointer-events-none" />
 
-            <div className={`flex gap-5 ${direction === 'left' ? 'animate-marquee-left' : 'animate-marquee-right'} pause-on-hover`}>
+            <div className={cn('flex gap-5 pause-on-hover', direction === 'left' ? 'animate-marquee-left' : 'animate-marquee-right')}>
                 {doubled.map((t, i) => (
                     <TestimonialCard key={`${t.name}-${i}`} {...t} />
                 ))}
@@ -76,7 +77,7 @@ export default function SocialProofWall() {
                 aria-hidden="true"
             />
 
-            <div className="container mx-auto px-4 mb-10">
+            <div className="container mx-auto px-5 lg:px-8 mb-10">
                 <h2 className="text-center text-3xl lg:text-4xl font-bold text-white mb-3">
                     Don&apos;t Just Take Our Word For It
                 </h2>

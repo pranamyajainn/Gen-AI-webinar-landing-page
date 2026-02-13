@@ -1,7 +1,7 @@
 export default function BeforeAfter() {
     return (
         <section id="sp-3" className="py-20 bg-slate-950 border-y border-white/5">
-            <div className="container mx-auto px-4">
+            <div className="container mx-auto px-5 lg:px-8">
                 <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
 
                     <div className="bg-slate-900 rounded-2xl p-6 border border-red-500/10 relative overflow-hidden group">

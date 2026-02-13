@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import RegisterButton from '@/components/RegisterButton';
 import Image from 'next/image';
+import { cn } from '@/lib/utils';
 
 const cards = [
     {
@@ -45,12 +46,12 @@ export default function VisualMomentum() {
     // We'll use a simple CSS grid with overflow for robustness + Framer for entrance.
 
     return (
-        <section id="visuals-s2" className="py-20 bg-slate-950 relative overflow-hidden">
+        <section id="visuals-s2" className="py-20 bg-slate-950 relative overflow-hidden section-glow-purple">
 
             {/* Background decoration */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/20 via-slate-950 to-slate-950 pointer-events-none" />
 
-            <div className="container mx-auto px-4 relative z-10">
+            <div className="container mx-auto px-5 lg:px-8 relative z-10">
                 <div className="text-center mb-12 max-w-2xl mx-auto">
                     <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
                         Speed is the New Currency
@@ -68,7 +69,7 @@ export default function VisualMomentum() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: i * 0.1 }}
                             viewport={{ once: true }}
-                            className={`min-w-[260px] h-[320px] rounded-2xl border p-6 flex flex-col justify-end relative overflow-hidden snap-center group hover:-translate-y-2 transition-transform duration-300 ${card.bg} border`}
+                            className={cn('min-w-[260px] h-[320px] rounded-2xl border p-6 flex flex-col justify-end relative overflow-hidden snap-center group hover:-translate-y-2 hover:shadow-xl hover:shadow-indigo-500/5 transition-all duration-300', card.bg)}
                         >
                             {/* Feature Image */}
                             <div className="absolute top-0 left-0 right-0 h-48 overflow-hidden">

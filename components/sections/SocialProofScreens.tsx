@@ -1,7 +1,7 @@
 export default function SocialProofScreens() {
     return (
         <section id="sp-5" className="py-20 bg-slate-900/50 border-y border-white/5 overflow-hidden">
-            <div className="container mx-auto px-4 text-center mb-12">
+            <div className="container mx-auto px-5 lg:px-8 text-center mb-12">
                 <h3 className="text-slate-400 font-medium uppercase tracking-widest">Don't just take our word for it</h3>
             </div>
 

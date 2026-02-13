@@ -5,7 +5,7 @@ import Image from 'next/image';
 export default function Instructor() {
     return (
         <section id="instructor-s5" className="py-20 bg-slate-950">
-            <div className="container mx-auto px-4">
+            <div className="container mx-auto px-5 lg:px-8">
                 <div className="flex flex-col lg:flex-row items-center gap-12 max-w-5xl mx-auto">
 
                     <div className="w-full lg:w-1/2 flex justify-center lg:justify-end py-8">

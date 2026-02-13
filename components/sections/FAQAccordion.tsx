@@ -2,6 +2,8 @@
 import { useState, useRef } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { ChevronDown, HelpCircle } from 'lucide-react';
+import { fadeUp, staggerContainer } from '@/lib/motion';
+import { cn } from '@/lib/utils';
 
 const FAQS = [
     {
@@ -34,28 +36,20 @@ const FAQS = [
     },
 ];
 
-const fadeUp = {
-    hidden: { opacity: 0, y: 12 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' as const } },
-};
-
-const container = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.06, delayChildren: 0.1 } },
-};
+const container = staggerContainer(0.06, 0.1);
 
 function AccordionItem({ q, a, isOpen, onToggle }: { q: string; a: string; isOpen: boolean; onToggle: () => void }) {
     return (
         <motion.div
             variants={fadeUp}
-            className={`border rounded-xl overflow-hidden transition-colors duration-300 ${isOpen ? 'border-indigo-500/25 bg-slate-900/80' : 'border-white/[0.06] bg-slate-900/40 hover:border-white/10'}`}
+            className={cn('border rounded-xl overflow-hidden transition-all duration-300', isOpen ? 'border-indigo-500/25 bg-white/[0.04] backdrop-blur-xl border-l-2 border-l-indigo-500/50 shadow-lg shadow-indigo-500/5' : 'border-white/[0.06] bg-white/[0.02] backdrop-blur-sm hover:border-white/10 hover:bg-white/[0.03]')}
         >
             <button
                 onClick={onToggle}
                 className="w-full flex items-center justify-between p-5 text-left group"
                 aria-expanded={isOpen}
             >
-                <span className={`font-semibold text-sm transition-colors duration-200 ${isOpen ? 'text-white' : 'text-slate-300 group-hover:text-white'}`}>
+                <span className={cn('font-semibold text-sm transition-colors duration-200', isOpen ? 'text-white' : 'text-slate-300 group-hover:text-white')}>
                     {q}
                 </span>
                 <motion.div
@@ -63,7 +57,7 @@ function AccordionItem({ q, a, isOpen, onToggle }: { q: string; a: string; isOpe
                     transition={{ duration: 0.25, ease: 'easeInOut' }}
                     className="flex-shrink-0 ml-3"
                 >
-                    <ChevronDown className={`w-4 h-4 transition-colors duration-200 ${isOpen ? 'text-indigo-400' : 'text-slate-600'}`} />
+                    <ChevronDown className={cn('w-4 h-4 transition-colors duration-200', isOpen ? 'text-indigo-400' : 'text-slate-600')} />
                 </motion.div>
             </button>
 
@@ -92,9 +86,9 @@ export default function FAQAccordion() {
     const isInView = useInView(ref, { once: true, margin: '-60px' });
 
     return (
-        <section id="faq" className="py-16 lg:py-24 bg-slate-950 relative" ref={ref}>
+        <section id="faq" className="py-16 lg:py-24 bg-slate-950 relative section-glow-purple" ref={ref}>
             <motion.div
-                className="container mx-auto px-4 max-w-3xl relative z-10"
+                className="container mx-auto px-5 lg:px-8 max-w-3xl relative z-10"
                 variants={container}
                 initial="hidden"
                 animate={isInView ? 'visible' : 'hidden'}
@@ -108,7 +102,7 @@ export default function FAQAccordion() {
                     <h2 className="text-3xl lg:text-4xl font-bold text-white mb-2">
                         Still Thinking It Over?
                     </h2>
-                    <p className="text-slate-500 text-sm max-w-md mx-auto">
+                    <p className="text-slate-400 text-sm max-w-md mx-auto">
                         Here are the most common concerns — answered honestly.
                     </p>
                 </motion.div>

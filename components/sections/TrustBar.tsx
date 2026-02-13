@@ -1,25 +1,11 @@
 'use client';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { fadeUp, staggerContainer } from '@/lib/motion';
 
 const BRANDS = ['Google', 'Microsoft', 'Uber', 'Notion', 'Spotify', 'Stripe'];
 
-const container = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: { staggerChildren: 0.08, delayChildren: 0.1 },
-    },
-};
-
-const itemVariant = {
-    hidden: { opacity: 0, y: 12 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.5, ease: 'easeOut' as const },
-    },
-};
+const container = staggerContainer(0.08, 0.1);
 
 export default function TrustBar() {
     const ref = useRef(null);
@@ -30,7 +16,7 @@ export default function TrustBar() {
             {/* Top separator */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-            <div className="container mx-auto px-4">
+            <div className="container mx-auto px-5 lg:px-8">
                 <motion.p
                     initial={{ opacity: 0 }}
                     animate={isInView ? { opacity: 1 } : {}}
@@ -49,7 +35,7 @@ export default function TrustBar() {
                     {BRANDS.map((brand) => (
                         <motion.div
                             key={brand}
-                            variants={itemVariant}
+                            variants={fadeUp}
                             className="text-lg md:text-xl font-bold font-mono text-white/25 hover:text-white/70 transition-colors duration-500 cursor-default select-none"
                         >
                             {brand}

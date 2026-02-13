@@ -2,6 +2,8 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Zap, Brain, Rocket, Globe, Layers } from 'lucide-react';
+import { fadeUp, staggerContainer } from '@/lib/motion';
+import { cn } from '@/lib/utils';
 
 /* ─── Founder Leverage Pillars ─── */
 const LEVERAGE_PILLARS = [
@@ -39,15 +41,7 @@ const LEVERAGE_PILLARS = [
     }
 ];
 
-const container = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
-};
-
-const fadeUp = {
-    hidden: { opacity: 0, y: 24, scale: 0.98 },
-    visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: "easeOut" as const } },
-};
+const container = staggerContainer(0.15);
 
 export default function ValueStack() {
     const ref = useRef(null);
@@ -56,10 +50,10 @@ export default function ValueStack() {
     return (
         <section id="value-stack" className="py-24 bg-slate-950 relative overflow-hidden" ref={ref}>
             {/* Ambient Background */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-500/5 blur-[120px] rounded-full pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-500/5 blur-[120px] rounded-full pointer-events-none" />
 
             <motion.div
-                className="container mx-auto px-4 relative z-10"
+                className="container mx-auto px-5 lg:px-8 relative z-10"
                 variants={container}
                 initial="hidden"
                 animate={isInView ? 'visible' : 'hidden'}
@@ -70,8 +64,8 @@ export default function ValueStack() {
                         <Globe className="w-3.5 h-3.5" />
                         No More Hiring Fatigue
                     </motion.div>
-                    <motion.h2 variants={fadeUp} className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
-                        Install <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">"The Founder's AI OS"</span> <br />
+                    <motion.h2 variants={fadeUp} className="text-3xl lg:text-4xl font-bold text-white mb-6 leading-tight">
+                        Install <span className="text-gradient-brand">"The Founder's AI OS"</span> <br />
                         in One Afternoon.
                     </motion.h2>
                     <motion.p variants={fadeUp} className="text-lg text-slate-400 leading-relaxed max-w-2xl mx-auto">
@@ -85,14 +79,14 @@ export default function ValueStack() {
                         <motion.div
                             key={pillar.title}
                             variants={fadeUp}
-                            className={`group relative p-8 rounded-3xl bg-slate-900/40 border ${pillar.border} hover:bg-slate-900/60 transition-all duration-500`}
+                            className={cn('group relative p-8 rounded-3xl bg-white/[0.02] backdrop-blur-sm border hover:bg-white/[0.04] hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-500/5 transition-all duration-500', pillar.border)}
                         >
                             {/* Hover Gradient */}
-                            <div className={`absolute inset-0 bg-gradient-to-br ${pillar.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-3xl`} />
+                            <div className={cn('absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-3xl', pillar.gradient)} />
 
                             <div className="relative z-10 flex flex-col h-full">
-                                <div className={`w-12 h-12 rounded-2xl bg-slate-950 border border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 shadow-lg`}>
-                                    <pillar.icon className={`w-6 h-6 ${pillar.iconColor}`} />
+                                <div className="w-12 h-12 rounded-2xl bg-slate-950 border border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-indigo-500/10 transition-all duration-500 shadow-md">
+                                    <pillar.icon className={cn('w-6 h-6', pillar.iconColor)} />
                                 </div>
 
                                 <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-indigo-200 transition-colors">
@@ -108,7 +102,7 @@ export default function ValueStack() {
 
                 {/* Bottom CTA Hook */}
                 <motion.div variants={fadeUp} className="mt-16 text-center">
-                    <p className="text-slate-500 text-sm italic">
+                    <p className="text-slate-400 text-sm italic">
                         "If I attend this, I stop depending on everyone else."
                     </p>
                 </motion.div>

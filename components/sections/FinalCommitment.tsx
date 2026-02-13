@@ -3,16 +3,9 @@ import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import RegisterButton from '@/components/RegisterButton';
+import { fadeUp, staggerContainer } from '@/lib/motion';
 
-const fadeUp = {
-    hidden: { opacity: 0, y: 14 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' as const } },
-};
-
-const container = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
-};
+const container = staggerContainer(0.12, 0.1);
 
 export default function FinalCommitment() {
     const ref = useRef(null);
@@ -35,7 +28,7 @@ export default function FinalCommitment() {
             />
 
             <motion.div
-                className="container mx-auto px-4 max-w-2xl text-center relative z-10"
+                className="container mx-auto px-5 lg:px-8 max-w-2xl text-center relative z-10"
                 variants={container}
                 initial="hidden"
                 animate={isInView ? 'visible' : 'hidden'}
@@ -54,7 +47,7 @@ export default function FinalCommitment() {
                         The only difference between a burnt-out founder and a visionary is their operating system.
                         You have the vision. Now give yourself the time to execute it.
                     </p>
-                    <p className="text-slate-500 text-sm leading-relaxed">
+                    <p className="text-slate-400 text-sm leading-relaxed">
                         This workshop is free, but the 20 hours a week you'll save is priceless.
                     </p>
                 </motion.div>
@@ -67,7 +60,7 @@ export default function FinalCommitment() {
                             <ArrowRight className="w-4 h-4" />
                         </span>
                     </RegisterButton>
-                    <p className="text-xs text-slate-600 mt-3">
+                    <p className="text-xs text-slate-500 mt-3">
                         No credit card required. Unsubscribe anytime.
                     </p>
                 </motion.div>

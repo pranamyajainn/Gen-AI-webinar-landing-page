@@ -17,7 +17,7 @@ const modules = [
 export default function ValueBreakdown() {
     return (
         <section id="value-s4" className="py-20 bg-slate-950">
-            <div className="container mx-auto px-4">
+            <div className="container mx-auto px-5 lg:px-8">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
                         What You Will Learn in 90 Minutes
